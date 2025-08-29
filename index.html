@@ -1,1 +1,19 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>情報_課題</title>
+</head>
+<body>
+  <script>
+    const recognition = new webkitSpeechRecognition(); // Chromeの場合
+recognition.lang = "ja-JP"; // 日本語
+recognition.start();
 
+recognition.onresult = (event) => {
+  const text = event.results[0][0].transcript;
+  console.log("認識結果:", text);
+};
+  </script>
+</body>
+</html>
