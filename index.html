@@ -5,15 +5,28 @@
   <title>情報_課題</title>
 </head>
 <body>
-  <script>
-    const recognition = new webkitSpeechRecognition(); // Chromeの場合
-recognition.lang = "ja-JP"; // 日本語
-recognition.start();
+    <h1>Sound&Image</h1>
+    <textarea id="result"></textarea>
 
-recognition.onresult = (event) => {
-  const text = event.results[0][0].transcript;
-  console.log("認識結果:", text);
-};
+  <script>
+    function addText(_text) {
+        const text = document.getElementById("result");
+        text.value += "\n" + _text;
+    }
+        var text;
+        SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+  const recognition = new SpeechRecognition();
+  recognition.lang = 'ja-JP';       // 日本語に設定
+  recognition.continuous = true;    // 連続認識モード
+  recognition.interimResults = true; 
+
+  recognition.onresult = (event) => {
+    text = event.results[0][0].transcript;
+  }
+
+  recognition.start();
+    
+    
   </script>
 </body>
 </html>
